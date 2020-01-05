@@ -1,6 +1,6 @@
 #include"monty.h"
 
-int free_all = 0;
+int free_all;
 
 /**
  *main - funtion that interprets Monty bitecode
@@ -15,6 +15,7 @@ int main(int ac, char **av)
 	char *_buf = NULL, *no_command = "\n";
 	unsigned int num_lines = 1;
 	stack_t *stack = NULL;
+	free_all = 0;
 
 	if (ac != 2)
 	{
