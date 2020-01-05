@@ -63,7 +63,7 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 
 	arg_line = strtok(_line, arg_sep);
 	_opcode = arg_line;
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 11; i++)
 	{
 		opera = fun_select(arg_line, i, &k);
 
@@ -110,7 +110,8 @@ void (*fun_select(char *a_l, int i, int *k))(stack_t **s, unsigned int l_n)
 		{"nop", fun_nop},
 		{"sub", fun_sub},
 		{"div", fun_div},
-		{"mul", fun_mul}
+		{"mul", fun_mul},
+		{"mod", fun_mod}
 	};
 
 	*k = strcmp(arr_fun[i].opcode, a_l);
