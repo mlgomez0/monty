@@ -62,6 +62,8 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 	void (*opera)(stack_t **, unsigned int);
 
 	arg_line = strtok(_line, arg_sep);
+	if (*arg_line == '#')
+		return (*stack);
 	_opcode = arg_line;
 	for (i = 0; i < 11; i++)
 	{
