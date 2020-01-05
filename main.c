@@ -45,7 +45,7 @@ int main(int ac, char **av)
 	fclose(fd);
 	free_dlistint(stack);
 	free(_buf);
-	return (1);
+	return (0);
 }
 /**
  *check_fun - determines which function to use
