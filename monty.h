@@ -34,12 +34,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern int free_all;
 stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack);
 void fun_push(stack_t **stack, unsigned int line_number);
 void fun_pall(stack_t **stack, unsigned int line_number);
 void fun_pint(stack_t **stack, unsigned int line_number);
 void fun_pop(stack_t **stack, unsigned int line_number);
-extern int free_all;
 void free_dlistint(stack_t *stack);
 
 #endif
