@@ -51,5 +51,6 @@ void fun_mul(stack_t **stack, unsigned int line_number);
 void fun_mod(stack_t **stack, unsigned int line_number);
 void fun_pchar(stack_t **stack, unsigned int line_number);
 void fun_pstr(stack_t **stack, unsigned int line_number);
+void fun_rotl(stack_t **stack, unsigned int line_number);
 
 #endif
