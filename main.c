@@ -78,7 +78,7 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 				 && strcmp(arg_line, _zero) != 0 && i == 0))
 			{
 				{
-					fprintf(stderr, "L%d: usage: push integer\n", num_lines);
+					fprintf(stderr, "L%u: usage: push integer\n", num_lines);
 					free_all = 1;
 					return (*stack);
 				}
@@ -89,7 +89,7 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 			return (*stack);
 		}
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", num_lines, _opcode);
+	fprintf(stderr, "L%u: unknown instruction %s\n", num_lines, _opcode);
 	free_all = 1;
 	return (*stack);
 }
