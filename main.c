@@ -58,22 +58,16 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 {
 	char *arg_line, *_opcode, *arg_sep = " \t\r\a\n", *_zero = "0";
 	unsigned int m, i = 0;
-	instruction_t arr_fun[] = {
-		{"push", fun_push},
-		{"pall", fun_pall},
-		{"pint", fun_pint},
-		{"pop", fun_pop},
-		{"swap", fun_swap},
-		{"add", fun_add},
-		{"nop", fun_nop},
-		{"sub", fun_sub}
-	};
+	int k;
+	void (*opera)(stack_t **, unsigned int);
 
 	arg_line = strtok(_line, arg_sep);
 	_opcode = arg_line;
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < 9; i++)
 	{
-		if (strcmp(arr_fun[i].opcode, arg_line) == 0)
+		opera = fun_select(arg_line, i, &k);
+
+		if (k == 0)
 		{
 			arg_line = strtok(NULL, arg_sep);
 			if (arg_line)
@@ -89,7 +83,7 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 			}
 			else if (i != 0)
 				m = num_lines;
-			arr_fun[i].f(stack, m);
+			opera(stack, m);
 			return (*stack);
 		}
 	}
@@ -97,6 +91,31 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 	free_all = 1;
 	return (*stack);
 }
+/**
+ *fun_select - Select the right function
+ *@a_l: opcode tp be evaluated
+ *@i: position to be valuated
+ *@k: pointer of a integer to evaluate the opcode
+ *Return: pointer to a function
+ */
+void (*fun_select(char *a_l, int i, int *k))(stack_t **s, unsigned int l_n)
+{
+	instruction_t arr_fun[] = {
+		{"push", fun_push},
+		{"pall", fun_pall},
+		{"pint", fun_pint},
+		{"pop", fun_pop},
+		{"swap", fun_swap},
+		{"add", fun_add},
+		{"nop", fun_nop},
+		{"sub", fun_sub},
+		{"div", fun_div}
+	};
+
+	*k = strcmp(arr_fun[i].opcode, a_l);
+	return (arr_fun[i].f);
+}
+
 /**
  *free_dlistint - free the stack once all lines are executed
  *@stack: pointer to the doubly linked list

@@ -1,5 +1,9 @@
 
-push 0.5
+push 10
+
+
+add
+
 pall
 
 

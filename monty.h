@@ -45,5 +45,7 @@ void fun_swap(stack_t **stack, unsigned int line_number);
 void fun_add(stack_t **stack, unsigned int line_number);
 void fun_nop(stack_t **stack, unsigned int line_number);
 void fun_sub(stack_t **stack, unsigned int line_number);
+void fun_div(stack_t **stack, unsigned int line_number);
+void (*fun_select(char *a_l, int i, int *k))(stack_t **s, unsigned int l_n);
 
 #endif
