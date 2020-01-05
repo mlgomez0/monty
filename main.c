@@ -63,12 +63,13 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 		{"pall", fun_pall},
 		{"pint", fun_pint},
 		{"pop", fun_pop},
-		{"swap", fun_swap}
+		{"swap", fun_swap},
+		{"add", fun_add}
 	};
 
 	arg_line = strtok(_line, arg_sep);
 	_opcode = arg_line;
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < 6; i++)
 	{
 		if (strcmp(arr_fun[i].opcode, arg_line) == 0)
 		{
