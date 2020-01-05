@@ -50,5 +50,6 @@ void (*fun_select(char *a_l, int i, int *k))(stack_t **s, unsigned int l_n);
 void fun_mul(stack_t **stack, unsigned int line_number);
 void fun_mod(stack_t **stack, unsigned int line_number);
 void fun_pchar(stack_t **stack, unsigned int line_number);
+void fun_pstr(stack_t **stack, unsigned int line_number);
 
 #endif

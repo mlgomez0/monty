@@ -65,7 +65,7 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 	if (*arg_line == '#')
 		return (*stack);
 	_opcode = arg_line;
-	for (i = 0; i < 12; i++)
+	for (i = 0; i < 13; i++)
 	{
 		opera = fun_select(arg_line, i, &k);
 
@@ -114,7 +114,8 @@ void (*fun_select(char *a_l, int i, int *k))(stack_t **s, unsigned int l_n)
 		{"div", fun_div},
 		{"mul", fun_mul},
 		{"mod", fun_mod},
-		{"pchar", fun_pchar}
+		{"pchar", fun_pchar},
+		{"pstr", fun_pstr}
 	};
 
 	*k = strcmp(arr_fun[i].opcode, a_l);
