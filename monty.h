@@ -41,5 +41,6 @@ void fun_pall(stack_t **stack, unsigned int line_number);
 void fun_pint(stack_t **stack, unsigned int line_number);
 void fun_pop(stack_t **stack, unsigned int line_number);
 void free_dlistint(stack_t *stack);
+void fun_swap(stack_t **stack, unsigned int line_number);
 
 #endif

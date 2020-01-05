@@ -13,7 +13,7 @@ void fun_push(stack_t **stack, unsigned int line_number)
 		newnode = malloc(sizeof(stack_t));
 		if (newnode == NULL)
 		{
-			fprintf(stderr,"Error: malloc failed\n");
+			fprintf(stderr, "Error: malloc failed\n");
 			free_all = 1;
 		}
 		else
@@ -92,5 +92,26 @@ void fun_pop(stack_t **stack, unsigned int line_number)
 	{
 		free(*stack);
 		*stack = NULL;
+	}
+}
+/**
+ *fun_swap - swap the first two elements in a doubly linked list
+ *@stack: double pointer to the doubly linked list
+ *@line_number: number of the current line read in .m file
+ */
+void fun_swap(stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		temp = (*stack)->n;
+		(*stack)->n = (*stack)->next->n;
+		(*stack)->next->n = temp;
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_all = 1;
 	}
 }
