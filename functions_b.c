@@ -33,3 +33,29 @@ void fun_mod(stack_t **stack, unsigned int line_number)
 		free_all = 1;
 	}
 }
+/**
+ *fun_pchar - determines the module between tops in a doubly linked list
+ *@stack: doble pointer to the doubly linked list
+ *@line_number:number to be pushed in the node
+ */
+void fun_pchar(stack_t **stack, unsigned int line_number)
+{
+	if (*stack != NULL)
+	{
+		if ((*stack)->n >= 0 && (*stack)->n <= 127)
+		{
+			putchar((*stack)->n);
+			putchar('\n');
+		}
+		else
+		{
+			fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+			free_all = 1;
+		}
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		free_all = 1;
+	}
+}
