@@ -81,7 +81,7 @@ void fun_pstr(stack_t **stack, unsigned int line_number)
 	line_number = line_number;
 }
 /**
- *fun_rotl - prints swapt the top and last elements of the stack
+ *fun_rotl - rotates stack to the top
  *@stack: doble pointer to the doubly linked list
  *@line_number:number to be pushed in the node
  */
@@ -98,6 +98,33 @@ void fun_rotl(stack_t **stack, unsigned int line_number)
 		{
 			temp->n = temp->next->n;
 			temp = temp->next;
+		}
+		temp->n = temp_num;
+	}
+	line_number = line_number;
+}
+/**
+ *fun_rotr - rotates the stack to the bottom
+ *@stack: doble pointer to the doubly linked list
+ *@line_number:number to be pushed in the node
+ */
+void fun_rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = NULL;
+	int temp_num;
+
+	temp = *stack;
+	if (*stack != NULL)
+	{
+		while (temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		temp_num = temp->n;
+		while (temp->prev != NULL)
+		{
+			temp->n = temp->prev->n;
+			temp = temp->prev;
 		}
 		temp->n = temp_num;
 	}
