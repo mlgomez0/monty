@@ -56,7 +56,7 @@ int main(int ac, char **av)
  **/
 stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 {
-	char *arg_line, *_opcode, *arg_sep = " \t\r\a\n", *_zero = "0";
+	char *arg_line, *_opcode, *arg_sep = " \t\n", *_zero = "0";
 	unsigned int m, i = 0;
 	int k;
 	void (*opera)(stack_t **, unsigned int);
