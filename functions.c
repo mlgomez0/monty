@@ -6,7 +6,8 @@
  */
 void fun_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newnode;
+	stack_t *newnode = NULL;
+	stack_t *temp = NULL;
 
 	if (stack != NULL)
 	{
@@ -25,13 +26,22 @@ void fun_push(stack_t **stack, unsigned int line_number)
 	}
 	if (*stack == NULL)
 		*stack = newnode;
+	else if (free_all == 3)
+	{
+		temp = *stack;
+		while (temp->next)
+		{
+			temp = temp->next;
+		}
+		temp->next = newnode;
+		newnode->prev = temp;
+	}
 	else
 	{
 		(*stack)->prev = newnode;
 		newnode->next = *stack;
 		*stack = newnode;
 	}
-
 }
 /**
  *fun_pall - prints a doubly linked list
