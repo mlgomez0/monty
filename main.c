@@ -56,9 +56,9 @@ int main(int ac, char **av)
  **/
 stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 {
-	char *arg_line, *_opcode, *arg_sep = " \t\n", *_zero = "0";
+	char *arg_line, *_opcode, *arg_sep = " \t\n", *_zero = "0", copy_arg[1024];
 	unsigned int m, i = 0;
-	int k;
+	int k, _flag;
 	void (*opera)(stack_t **, unsigned int);
 
 	arg_line = strtok(_line, arg_sep);
@@ -68,14 +68,17 @@ stack_t *check_fun(char *_line, unsigned int num_lines, stack_t **stack)
 	for (i = 0; i < 17; i++)
 	{
 		opera = fun_select(arg_line, i, &k);
-
 		if (k == 0)
 		{
 			arg_line = strtok(NULL, arg_sep);
 			if (arg_line)
+			{
+				strcpy(copy_arg, arg_line);
+				_flag = check_alpha(copy_arg);
 				m = atoi(arg_line);
+			}
 			if ((i == 0 && arg_line == NULL) || (arg_line && m == 0
-				 && strcmp(arg_line, _zero) != 0 && i == 0))
+				 && strcmp(arg_line, _zero) != 0 && i == 0) || (i == 0 && _flag == 1))
 			{
 				{
 					fprintf(stderr, "L%u: usage: push integer\n", num_lines);
@@ -145,4 +148,21 @@ void free_dlistint(stack_t *stack)
 		temp = temp2;
 	}
 	free(temp);
+}
+/**
+ *check_alpha - review if a given string is has alpha char
+ *@s: string to be evaluated
+ *Return: 1 if there is a alphabetic char or zero
+ */
+int check_alpha(char *s)
+{
+	int j = 0;
+
+	while (s[j])
+	{
+		if (isalpha(s[j]) != 0)
+			return (1);
+		j++;
+	}
+	return (0);
 }

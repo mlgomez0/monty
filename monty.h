@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -55,5 +56,6 @@ void fun_rotl(stack_t **stack, unsigned int line_number);
 void fun_rotr(stack_t **stack, unsigned int line_number);
 void fun_stack(stack_t **stack, unsigned int line_number);
 void fun_queue(stack_t **stack, unsigned int line_number);
+int check_alpha(char *s);
 
 #endif
